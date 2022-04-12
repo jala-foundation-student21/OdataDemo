@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.OData.Routing.Controllers;
 
 namespace ODataWebAPI.Controllers
 {
-    public class BooksController: ODataController
+    public class BooksController : ODataController
     {
         private BookStoreContext _db;
 
@@ -45,5 +45,6 @@ namespace ODataWebAPI.Controllers
             _db.SaveChanges();
             return Created(book);
         }
+
     }
 }

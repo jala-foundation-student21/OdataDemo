@@ -48,5 +48,34 @@ namespace ODataWebAPI.Controllers
 
         }
 
+        [EnableQuery]
+        public IActionResult Put(int key,[FromBody]Companies companies)
+        {
+            _bookStoreContext.Companies.Update(companies);
+            _bookStoreContext.SaveChanges();
+            return Updated(companies);
+
+        }
+
+
+
+        [EnableQuery]
+        public IActionResult Delete (int key)
+        {
+            try
+            {
+                 _bookStoreContext.Remove(key);
+                _bookStoreContext.SaveChanges();
+               return Ok();
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
+        }
+
+
+
     }
 }
