@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "f04921e4-761e-4d54-8d5a-e18c7f1c5ee8",
+		"name": "Odata Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Book by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5000/odata/Books(1)",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"Books(1)"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5000/odata/Books",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"Books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Titles and ISBN",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5000/odata/Books?$select=Title, ISBN",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"Books"
+					],
+					"query": [
+						{
+							"key": "$select",
+							"value": "Title, ISBN"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Books filter by price",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5000/odata/Books?$filter=Price le 50&$expand=Press($select=Name)&$select=Location($select=City)",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"Books"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "Price le 50"
+						},
+						{
+							"key": "$expand",
+							"value": "Press($select=Name)"
+						},
+						{
+							"key": "$select",
+							"value": "Location($select=City)"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Books",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Id\":3,\"ISBN\":\"82-917-7192-5\",\"Title\":\"Hary Potter\",\"Author\":\"J. K. Rowling\",\r\n    \"Price\":199.99,\r\n    \"Location\":{\r\n        \"City\":\"Shanghai\",\r\n        \"Street\":\"Zhongshan RD\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5000/odata/Books",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"Books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Title and Press name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5000/odata/Books?$select=Title&$expand=Press($select=Name)",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"odata",
+						"Books"
+					],
+					"query": [
+						{
+							"key": "$select",
+							"value": "Title"
+						},
+						{
+							"key": "$expand",
+							"value": "Press($select=Name)"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
